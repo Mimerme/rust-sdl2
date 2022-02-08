@@ -156,7 +156,7 @@ fn compute_include_paths(fallback_path: String) -> Vec<String> {
         // don't print the "cargo:xxx" directives, we're just trying to get the include paths here
         let pkg_config_library = pkg_config::Config::new()
             .print_system_libs(false)
-            .probe("sdl2")
+            .probe("sdl2[x11]")
             .unwrap();
         for path in pkg_config_library.include_paths {
             include_paths.push(format!("{}", path.display()));
